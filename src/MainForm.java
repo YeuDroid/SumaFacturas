@@ -44,7 +44,7 @@ public class MainForm extends JFrame {
 	 */
 	public MainForm() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 580, 273);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -86,6 +86,10 @@ public class MainForm extends JFrame {
 	    autoSumChekBox = new JCheckBox("AutoSum");
 		autoSumChekBox.setSelected(true);
 		panel.add(autoSumChekBox);
+		
+		JCheckBox autoPasteChekBox = new JCheckBox("AutoPaste");
+		autoPasteChekBox.setSelected(true);
+		panel.add(autoPasteChekBox);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
@@ -165,7 +169,10 @@ public class MainForm extends JFrame {
 		//totales
 		double total = sumarLista();
 		totalBox.setText(String.valueOf(total));
-	
+		if(autoSumChekBox.isSelected())
+		{
+		   clipMgr.SetText(String.valueOf(total));
+		}
 
 	}
 	private double sumarLista() 
